@@ -11,4 +11,8 @@ app.use(express.json());
 import db from "./config/database.js"
 db.connect();
 
+import routes from "./routes/userRoutes.js";
+
+app.use("/users", routes)
+
 export default app;

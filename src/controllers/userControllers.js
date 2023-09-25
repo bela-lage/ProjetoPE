@@ -1,10 +1,15 @@
-const UserSchema = require("../models/userSchema");
-const bcrypt = require("bcrypt");
+import UserSchema from "../models/userSchema.js";
+import bcrypt from "bcrypt";
 
-const getAll = (req, res) => {
-  // seu código aqui
+const getAll = async (req, res) => {
+  UserSchema.find(function (err, users) {
+    if (err) {
+      res.status(500).send({ message: err.message });
+    }
+    res.status(200).send(users);
+  });
 };
 
-module.exports = {
+export default {
   getAll,
 };
